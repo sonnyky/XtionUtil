@@ -1,3 +1,0 @@
-D:/Workspace/XtionUtil/build/CMakeFiles/XtionCapture.dir
-D:/Workspace/XtionUtil/build/CMakeFiles/ALL_BUILD.dir
-D:/Workspace/XtionUtil/build/CMakeFiles/ZERO_CHECK.dir
