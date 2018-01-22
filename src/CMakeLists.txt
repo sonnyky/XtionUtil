@@ -15,6 +15,8 @@ set (CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install" CACHE PATH "default inst
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${XTION_INCLUDE_DIRS} ${XTIONUTIL_INCLUDE_DIRS})
 link_directories(${OPENNI2_LIB_DIR})
+
+# add_library sets the project to build dll libraries. For executables use add_executable instead
 add_library(XtionCapture SHARED main.cpp ${CMAKE_CURRENT_SOURCE_DIR}/include/common.hpp)
 
 target_link_libraries(XtionCapture ${OPENNI2_LIBRARIES})

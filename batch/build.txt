@@ -1,0 +1,7 @@
+
+
+cmake ../src -G "Visual Studio 15 2017 Win64"
+@REM set the directory to the current directory (or directory of your choice)
+set "VSCMD_START_DIR=%CD%"
+call <vsinstance_path>\Common7\Tools\VsDevCmd.bat
+devenv XtionCapture.sln /Build "Release|x64"
