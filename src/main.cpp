@@ -5,15 +5,6 @@
 using namespace std;
 using namespace openni;
 extern "C" {
-	char* TestHello() {
-		static char str[100];
-		sprintf(str, "Hello from native");
-		return str;
-	}
-
-	int InitDevice() {
-		return -2;
-	}
 
 	xtion_capture* com_tinker_xtion_capture_create() {
 		return new xtion_capture();
@@ -63,9 +54,7 @@ extern "C" {
 	Device* com_tinker_get_capture_handle(xtion_capture* instance) {
 		return instance->get_handle();
 	}
-	bool com_tinker_is_valid(xtion_capture* instance) {
-		return instance->is_valid();
-	}
+	
 	const char* com_tinker_get_device_name(xtion_capture* instance) {
 		Device device;
 		Status rc = device.open(ANY_DEVICE);
