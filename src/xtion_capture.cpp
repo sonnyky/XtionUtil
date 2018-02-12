@@ -25,7 +25,7 @@ void xtion_capture::set_device_address(Device* address) {
 	device_address = address;
 }
 
-void xtion_capture::set_device_uri(const char * uri) {
+void xtion_capture::set_device_uri(std::string uri) {
 	device_uri = uri;
 }
 
@@ -66,7 +66,7 @@ OniDeviceHandle xtion_capture::get_device_handle() {
 	return device_handle;
 }
 
-const char * xtion_capture::get_device_uri() {
+std::string xtion_capture::get_device_uri() {
 	return device_uri;
 }
 void xtion_capture::set_device_handle(OniDeviceHandle handle) {

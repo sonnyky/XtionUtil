@@ -1,4 +1,5 @@
 #include <OpenNI.h>
+#include <iostream>
 
 #pragma once
 using namespace openni;
@@ -21,10 +22,10 @@ public:
 	void open_device();
 	void close_device();
 
-	const char * device_uri;
-	const char * get_device_uri();
+	std::string device_uri;
+	std::string get_device_uri();
 	void set_device_address(Device* address);
-	void set_device_uri(const char * uri);
+	void set_device_uri(std::string uri);
 
 	OniDeviceHandle get_device_handle();
 	void set_device_handle(OniDeviceHandle handle);

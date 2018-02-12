@@ -24,10 +24,18 @@ extern "C" {
 		{
 			return;
 		}
+		std::string device_uri_string(device.getDeviceInfo().getUri()) ;
 		instance->set_init_flag(true);
 		instance->set_device_address(&device);
-		instance->set_device_uri(device.getDeviceInfo().getUri());
+		instance->set_device_uri(device_uri_string);
+		ofstream myfile;
+		myfile.open("open_device.txt");
+		myfile << "The device URI.\n";
+		myfile << device.getDeviceInfo().getUri();
+		myfile << "\nFinished.\n";
+		myfile.close();
 		instance->set_device_handle(device._getHandle());
+		return;
 	}
 
 	bool com_tinker_get_init_flag(xtion_capture* instance) {
@@ -50,10 +58,6 @@ extern "C" {
 
 
 
-
-	Device* com_tinker_get_capture_handle(xtion_capture* instance) {
-		return instance->get_handle();
-	}
 	
 	const char* com_tinker_get_device_name(xtion_capture* instance) {
 		Device device;
@@ -66,12 +70,22 @@ extern "C" {
 	}
 	const char* com_tinker_get_vendor_name(xtion_capture* instance) {
 		
-		Device device;
-		Status rc = device.open(ANY_DEVICE);
+		std::string device_uri = instance->get_device_uri();
+		ofstream myfile;
+		Device newDevice;
+		Status rc = newDevice.open(device_uri.c_str());
 		if (rc != STATUS_OK)
 		{
-			return "cannot open vendor name";
+			return "cannot open device name";
 		}
-		return device.getDeviceInfo().getVendor();
+		myfile.open("vendor.txt");
+		myfile << "Plugin name.\n";
+		myfile << instance->get_plugin_name();
+		myfile << "URI\n";
+		myfile << newDevice.getDeviceInfo().getVendor();
+		myfile << "\nFinished.\n";
+		myfile.close();
+		
+		return "check text file first";
 	}
 }
