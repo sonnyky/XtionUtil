@@ -18,6 +18,7 @@ public:
 
 	const char * error_message;
 	const char * get_error_message();
+	void set_error_message(std::string error);
 
 	void open_device();
 	void close_device();
@@ -26,6 +27,9 @@ public:
 	std::string get_device_uri();
 	void set_device_address(Device* address);
 	void set_device_uri(std::string uri);
+
+	Device thisDevice;
+	Device* get_device();
 
 	OniDeviceHandle get_device_handle();
 	void set_device_handle(OniDeviceHandle handle);
