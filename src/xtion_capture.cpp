@@ -2,12 +2,6 @@
 
 xtion_capture::xtion_capture()
 {
-	Status rc = thisDevice.open(ANY_DEVICE);
-	if (rc != STATUS_OK)
-	{
-		set_error_message("Failed to open device");
-		return;
-	}
 }
 
 xtion_capture::~xtion_capture()
@@ -16,7 +10,12 @@ xtion_capture::~xtion_capture()
 }
 
 void xtion_capture::open_device() {
-	
+	Status rc = thisDevice.open(ANY_DEVICE);
+	if (rc != STATUS_OK)
+	{
+		set_error_message("Failed to open device");
+		return;
+	}
 }
 
 Device* xtion_capture::get_device() {

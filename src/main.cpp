@@ -17,26 +17,9 @@ extern "C" {
 			return;
 		}
 	}
-	Device* com_tinker_open_device(xtion_capture* instance) {
-		Device device;
-		Status rc = device.open(ANY_DEVICE);
-		if (rc != STATUS_OK)
-		{
-			return nullptr;
-		}
-		std::string device_uri_string(device.getDeviceInfo().getUri()) ;
-		instance->set_init_flag(true);
-		instance->set_device_address(&device);
-		instance->set_device_uri(device_uri_string);
-		ofstream myfile;
-		Device* address = &device;
-		myfile.open("open_device.txt");
-		myfile << "The device URI.\n";
-		myfile << address->getDeviceInfo().getUri();
-		myfile << "\nFinished.\n";
-		myfile.close();
-		instance->set_device_handle(device._getHandle());
-		return &device;
+	const char* com_tinker_open_device(xtion_capture* instance) {
+		instance->open_device();
+		return instance->get_error_message();
 	}
 
 	bool com_tinker_get_init_flag(xtion_capture* instance) {
@@ -61,17 +44,10 @@ extern "C" {
 
 	
 	const char* com_tinker_get_device_name(xtion_capture* instance) {
-		Device device;
-		Status rc = device.open(ANY_DEVICE);
-		if (rc != STATUS_OK)
-		{
-			return "cannot open device name";
-		}
-		return device.getDeviceInfo().getName();
+		return instance->get_device()->getDeviceInfo().getName();
 	}
 	const char* com_tinker_get_vendor_name(xtion_capture* instance) {
 		
-		ofstream myfile;
 		/*
 		Status rc = instance->open(ANY_DEVICE);
 		if (rc != STATUS_OK)
@@ -79,14 +55,7 @@ extern "C" {
 			return "cannot open device name";
 		}
 		*/
-		myfile.open("vendor.txt");
-		myfile << "Plugin name.\n";
-		myfile << "xtion plugin";
-		myfile << "URI\n";
-		myfile << instance->get_device()->getDeviceInfo().getVendor();
-		myfile << "\nFinished.\n";
-		myfile.close();
 		
-		return "check text file first";
+		return instance->get_device()->getDeviceInfo().getVendor();
 	}
 }

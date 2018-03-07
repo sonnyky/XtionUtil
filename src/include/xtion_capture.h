@@ -16,7 +16,7 @@ public:
 	const char * plugin_name = "tinker xtion plugin for Unity";
 	const char * get_plugin_name();
 
-	const char * error_message;
+	const char * error_message = "No error";
 	const char * get_error_message();
 	void set_error_message(std::string error);
 

@@ -6,7 +6,7 @@
 extern "C" {
 	common_api xtion_capture* com_tinker_xtion_capture_create();
 	common_api void com_tinker_init_openni(xtion_capture* instance);
-	common_api Device* com_tinker_open_device(xtion_capture* instance);
+	common_api const char* com_tinker_open_device(xtion_capture* instance);
 
 	common_api bool com_tinker_get_init_flag(xtion_capture* instance);
 	common_api const char * com_tinker_get_plugin_name(xtion_capture* instance);
