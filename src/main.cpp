@@ -46,16 +46,7 @@ extern "C" {
 	const char* com_tinker_get_device_name(xtion_capture* instance) {
 		return instance->get_device()->getDeviceInfo().getName();
 	}
-	const char* com_tinker_get_vendor_name(xtion_capture* instance) {
-		
-		/*
-		Status rc = instance->open(ANY_DEVICE);
-		if (rc != STATUS_OK)
-		{
-			return "cannot open device name";
-		}
-		*/
-		
+	const char* com_tinker_get_vendor_name(xtion_capture* instance) {	
 		return instance->get_device()->getDeviceInfo().getVendor();
 	}
 }
