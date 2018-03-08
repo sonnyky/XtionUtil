@@ -44,6 +44,6 @@ const char * xtion_capture::get_plugin_name() {
 }
 
 void xtion_capture::close_device() {
-	device_address->close();
+	thisDevice.close();
 	OpenNI::shutdown();
 }
