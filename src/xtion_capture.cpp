@@ -117,6 +117,8 @@ const char * xtion_capture::get_plugin_name() {
 }
 
 void xtion_capture::close_device() {
+	depth_stream.stop();
+	depth_stream.destroy();
 	thisDevice.close();
 	OpenNI::shutdown();
 }
