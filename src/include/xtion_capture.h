@@ -33,6 +33,7 @@ public:
 	const char* start_depth_stream();
 	DepthPixel * depth_pixel;
 	DepthPixel* get_depth_data();
+	int test_depth_data();
 
 	const char * vendor_name;
 

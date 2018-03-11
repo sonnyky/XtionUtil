@@ -69,6 +69,32 @@ DepthPixel* xtion_capture::get_depth_data() {
 	return pDepth;
 }
 
+int xtion_capture::test_depth_data() {
+	int changedStreamDummy;
+	VideoStream* pStream = &depth_stream;
+	Status rc = OpenNI::waitForAnyStream(&pStream, 1, &changedStreamDummy, SAMPLE_READ_WAIT_TIMEOUT);
+	if (rc != STATUS_OK)
+	{
+		set_error_message("Wait failed");
+	}
+	rc = depth_stream.readFrame(&frame);
+	if (rc != STATUS_OK)
+	{
+		set_error_message("Read failed");
+	}
+	if (frame.getVideoMode().getPixelFormat() != PIXEL_FORMAT_DEPTH_1_MM && frame.getVideoMode().getPixelFormat() != PIXEL_FORMAT_DEPTH_100_UM)
+	{
+		set_error_message("Unexpected frame format");
+	}
+
+	DepthPixel* pDepth = (DepthPixel*)frame.getData();
+	int middleIndex = (frame.getHeight() + 1)*frame.getWidth() / 2;
+
+	//printf("[%08llu] %8d\n", (long long)frame.getTimestamp(), pDepth[middleIndex]);
+	return pDepth[middleIndex];
+}
+
+
 void xtion_capture::set_init_flag(bool flag) {
 	init_success_flag = flag;
 }

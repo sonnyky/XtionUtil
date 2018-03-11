@@ -17,5 +17,5 @@ extern "C" {
 
 	common_api const char * com_tinker_start_depth_stream(xtion_capture* instance);
 	common_api DepthPixel* com_tinker_get_depth_data(xtion_capture* instance);
-
+	common_api int com_tinker_test_depth_data(xtion_capture* instance);
 }

@@ -51,4 +51,7 @@ extern "C" {
 	DepthPixel* com_tinker_get_depth_data(xtion_capture* instance) {
 		return instance->get_depth_data();
 	}
+	int com_tinker_test_depth_data(xtion_capture* instance) {
+		return instance->test_depth_data();
+	}
 }
