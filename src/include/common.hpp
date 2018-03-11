@@ -11,12 +11,11 @@ extern "C" {
 	common_api bool com_tinker_get_init_flag(xtion_capture* instance);
 	common_api const char * com_tinker_get_plugin_name(xtion_capture* instance);
 	common_api const char * com_tinker_get_error_message(xtion_capture* instance);
-
-
-	// Untested APIs
-
-
 	common_api void com_tinker_close_device(xtion_capture* instance);
 	common_api const char* com_tinker_get_device_name(xtion_capture* instance);
 	common_api const char* com_tinker_get_vendor_name(xtion_capture* instance);
+
+	common_api const char * com_tinker_start_depth_stream(xtion_capture* instance);
+	common_api DepthPixel* com_tinker_get_depth_data(xtion_capture* instance);
+
 }
