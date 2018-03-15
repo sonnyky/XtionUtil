@@ -17,6 +17,6 @@ include_directories(${XTION_INCLUDE_DIRS} ${XTIONUTIL_INCLUDE_DIRS})
 link_directories(${OPENNI2_LIB_DIR})
 
 # add_library sets the project to build dll libraries. For executables use add_executable instead
-add_library(XtionCapture SHARED main.cpp ${CMAKE_CURRENT_SOURCE_DIR}/include/common.hpp)
+add_library(XtionCapture SHARED main.cpp xtion_capture.cpp ${CMAKE_CURRENT_SOURCE_DIR}/include/common.hpp ${CMAKE_CURRENT_SOURCE_DIR}/include/xtion_capture.h)
 
 target_link_libraries(XtionCapture ${OPENNI2_LIBRARIES})
