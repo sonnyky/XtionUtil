@@ -1,5 +1,7 @@
 # XtionUtil
-This is a Windows plugin for Unity to access Xtion2 camera from inside Unity/
+This is a Windows plugin for Unity to access Xtion2 camera from inside Unity <br>
+**Warning**: I don't have an Xtion camera anymore and further development is not possible at the moment.
+This was working as the time of writing but I can't guarantee on new versions of Windows, or OpenNI SDKs. Please just use this as a reference for now
 
 # Dependencies
 * OpenNI2 sdk for Xtion2. Download [here](https://www.asus.com/3D-Sensor/Xtion-2/HelpDesk_Download/).
